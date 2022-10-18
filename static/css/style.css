@@ -1,0 +1,274 @@
+.bmkg {
+    position: absolute;
+    top: 8px;
+    right: 30px;
+ }
+
+.tanggal {
+    position: relative;
+    margin-top:2px;
+ }
+
+#navbar {
+    position: fixed;
+    padding-top: 5px;
+    background-color: black;
+    height: 55px;
+    width: 100%;
+    top: 0px;
+    color:white; 
+    font-family: 'Kdam Thmor Pro'; 
+ }
+
+#navbar2 {
+    position:fixed;
+    top: 37px; 
+    margin-bottom: 6px; 
+    width: 100%; 
+    background-color:white ; 
+    font-family: 'Roboto Slab'; 
+}
+
+a.index {
+	background-color:deepskyblue; 
+	color:white; 
+	height:81px;
+}
+
+button.profil {
+	background-color:deepskyblue; 
+	color:white; 
+}
+
+button.layanan {
+	background-color:deepskyblue; 
+	color:white; 
+}
+
+button.infogempa {
+	background-color:deepskyblue; 
+	color:white; 
+}
+
+button.sebaranpetir {
+	background-color:deepskyblue; 
+	color:white; 
+}
+
+div.btnprofil {
+	color:black; 
+	width:120px;
+}
+
+div.btnlayanan {
+	color:black; 
+	width:160px;
+}
+
+div.btngempa {
+	color:black; 
+	width:250px;
+}
+
+div.btnpetir {
+	color:black; 
+	width:260px;
+}
+
+img.logoutama {
+	width:60px; 
+	height:60px;
+}
+
+.stageof {
+  position: absolute;
+  top: -15px;
+  right: 100px;
+}
+
+.spasi-atas{
+   margin-top: 3px;
+}
+
+.spasi-atass{
+   margin-top: 75px;
+}
+
+h4.pos_top {
+  position: relative;
+  top: -7px;
+  font-family: 'Kdam Thmor Pro';
+  color:black;
+  align: right;
+}
+
+h2.pos_bottom {
+  position: relative;
+  bottom: -6px;
+  font-family: 'Kdam Thmor Pro';
+  font-size:30px;
+  color:black;
+  align: right;
+}
+
+.footer {
+   position:relative;
+   width:100%;
+   background-color:#1a1a1a; 
+   color:white;
+}
+
+.footer2 {
+   position:relative;
+   width:100%;
+   color:white; 
+   font-size:10px;
+}
+
+.bmkg2 {
+	width: 100px;
+	height: 100px;
+    margin-top: 40px;
+    margin-left: 180px;
+ }  
+
+p.alamat {
+	margin-left:180px; 
+	margin-top:-10px; 
+	font-size:11px;
+}
+
+.link {
+  position: relative;
+  top: 25px;
+  width: 60%;
+}
+
+.linkterkait {
+	list-style-type:square; 
+	font-size:11px;
+}
+
+.apk {
+  position: relative;
+  top: 25px;
+  width: 60%;
+  margin-left: 35px;
+}
+
+.apkmbl {
+	margin-top:10px; 
+	font-size:11px;
+}
+
+img.pstore {
+	width:157px; 
+	height:60px;
+	position: relative;	
+	left:-10px; 
+	top:-5px;
+}
+
+img.appstore {
+	width:140px; 
+	height:75px;
+	position: relative; 
+	top:-20px;
+}
+
+.kontak {
+  position: relative;
+  top: 25px;
+  width: 50%;
+}
+ 	
+.email {
+	font-color:white; 
+	font-size:26px;
+}
+
+.hp {
+	color:white; 
+	position: relative; 
+	top: -40px; 
+	right: -40px;
+}
+
+.facebook {
+  position: relative;
+  right: 31px;
+  top: -37px;
+  width:27px; 
+  height:27px;
+}
+
+.twitter {
+  position: relative;
+  right: -17px;
+  top: -37px;
+  width:35px; 
+  height:35px;
+}
+
+.ig {
+  position: relative;
+  right: -44px;
+  top: -36px;
+  width:26px; 
+  height:25px;
+}
+
+.yt {
+  position: relative;
+  right: -11px;
+  top: -37px;
+  width:53px; 
+  height:37px;
+}
+
+.spasi-pinggir{
+  margin-right: 90px;
+}
+
+#map {
+  height: 800px;
+  width: 1800px;
+}
+  
+.posisi-map {
+  position: relative;
+  top: 540px;
+}
+
+.kontenprofil {
+	font-family:'Roboto Slab'; 
+	color:white; 
+	background-color: black; 
+	height: 70px; 
+	margin-top: 10px; 
+	position: relative; 
+	top: 90px;
+	padding-top: 28px; 
+	padding-left: 87px;
+}
+
+ 
+.kontenprofil2 {
+	z-index: -1 ;
+	background-color:white; 
+	position: relative; 
+	top:113px;
+}
+
+.kontenprofil3 {
+	width:1280px; 
+	height:1100px; 
+	background-color:white; 
+}
+
+.judulprofil {
+	color:white; 
+	padding-top:15px; 
+	font-family: 'Kdam Thmor Pro';
+}
+

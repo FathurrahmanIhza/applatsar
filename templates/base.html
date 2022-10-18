@@ -1,0 +1,225 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Stageof Aceh Selatan</title>
+
+<style>
+body, html {
+  height: 100%;
+  max-width: 100%;
+  margin: auto;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.bg-konten {
+  background-image: url("{% static 'image/blob-scene-haikei.svg' %}");
+  background-attachment: fixed;
+  background-repeat: repeat-y;
+  background-position: center;
+  background-size: cover;
+  position: relative;  
+}
+
+.b {
+  background-image: url("{% static 'image/bg-registration-form-7.jpg' %}");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;  
+}
+
+.bg-footer {
+   background-image:url("{% static 'image/wave.svg' %}");
+   height: 55%;
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+
+@media screen and (max-width: 600px) {
+  thead#sb1 {
+        font-size: 3vh;
+    }
+  tbody#sb1 {
+        font-size: 3vh;
+    }
+  .fontnavbar2 {
+    font-size: 3vh;
+    margin-top: 1vh;
+    width: 100%;
+    }
+  h4#narasigempa {
+	font-family: 'Roboto Slab';
+	font-size: 2.3vh;
+	display: inline-block;
+	margin: 3vh auto;
+  }
+  div#judulkonten {
+	font-family: 'Baumans' ;
+	color: black;
+	font-size: 6vh;
+    }
+  div#tanggal {
+    position: relative;
+	font-size: 1.6vh;
+	font-family:'Roboto Slab';
+    text-align: center;
+    }  
+  div.paragrafsejarah {
+    width: 95%;
+    margin: 2vh auto;
+    text-align: justify; 
+    text-justify: inter-word;
+    }
+}
+
+.wrap-layer{
+      position: relative;
+      height: 100%;
+   }
+
+.text-layer{
+      position: absolute;
+      width: 100%;
+      height: auto;
+      top: 0;
+      left: 0;
+      /* non-critical styles left out */
+   }
+</style>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="{% static 'css/w3.css' %}">
+<link rel="stylesheet" href="{% static 'css/style2.css' %}">
+<link rel="shortcut icon" type="image/png" href="{% static 'image/BMKGMini.png' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baumans&family=Kdam+Thmor+Pro&family=Noto+Serif&family=Raleway:wght@500;700&family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+
+<script>
+        var offset = 0;
+
+        function calcOffset() {
+            var xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+            xmlhttp.open("HEAD", "http://jam.bmkg.go.id/", false);
+            xmlhttp.send();
+
+            var dateStr = xmlhttp.getResponseHeader('Date');
+            var serverTimeMillisGMT = Date.parse(new Date(Date.parse(dateStr)).toUTCString());
+            var localMillisUTC = (new Date()).getTime();
+
+            offset = serverTimeMillisGMT - localMillisUTC;
+        }
+
+        function getServerTime() {
+            var date = new Date();
+            date.setTime(date.getTime() + offset);
+            return date;
+        }
+
+        function showLocalTime(a, b, c, d) {
+            if (document.getElementById && document.getElementById(a)) {
+                this.container = document.getElementById(a), this.displayversion = d;
+                this.localtime = this.serverdate = getServerTime(), this.localtime.setTime(this.serverdate.getTime() +
+                    60 * c * 1e3), this.updateTime(), this.updateContainer()
+            }
+        }
+
+        function formatField(a, b) {
+            if ("undefined" != typeof b) {
+                var c = a > 12 ? a - 12 : a;
+                return 0 == c ? 12 : c
+            }
+            return a <= 9 ? "0" + a : a
+        }
+        var minggutxt = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"],
+            weekdaystxt = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            bulantxt = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September",
+                "Oktober", "November", "Desember"
+            ],
+            monthstxt = ["January", "February", "March", "April", "May", "June", "July", "August", "September",
+                "October", "November", "December"
+            ];
+        showLocalTime.prototype.updateTime = function() {
+            var a = this;
+            this.localtime.setSeconds(this.localtime.getSeconds() + 1), setTimeout(function() {
+                a.updateTime()
+            }, 1e3)
+        }, showLocalTime.prototype.updateContainer = function() {
+            var a = this;
+            if ("long" == this.displayversion) this.container.innerHTML = this.localtime.toLocaleString();
+            else {
+                var b = this.localtime.getHours(),
+                    c = this.localtime.getMinutes(),
+                    d = this.localtime.getSeconds(),
+                    k = (this.localtime.getDate(), this.localtime.getUTCDate(), minggutxt[this.localtime.getDay()],
+                        bulantxt[this.localtime.getMonth()], weekdaystxt[this.localtime.getUTCDay()], monthstxt[this
+                            .localtime.getUTCMonth()], b + 1);
+                k >= 24 && (k -= 24);
+                var l = b + 2;
+                l >= 24 && (l -= 24);
+                var m = b - 7;
+                m < 0 && (m += 24);
+                this.container.innerHTML =
+                    "<span class='hari-digit hidden-xs'><a href='http://jam.bmkg.go.id/' target='_blank'>Standar Waktu Indonesia</a> </span><span class='FontDigit'>" +
+                    formatField(b) + ":" + formatField(c) + ":" + formatField(d) +
+                    " WIB / </span><span class='FontDigit'>" + formatField(m) + ":" + formatField(c) + ":" +
+                    formatField(d) + " UTC</span>"
+            }
+            setTimeout(function() {
+                a.updateContainer()
+            }, 1e3)
+        };
+</script>
+	
+</head>
+
+<body>
+
+    {% include 'judul.html' %}
+    {% block content %}
+    
+    {% endblock %}
+
+</body>
+
+<footer>
+
+    <div class="bg-footer">
+    
+        <div class="w3-cell-row w3-border-top">
+            <div class="w3-container w3-cell w3-center w3-cell-middle" style="display: block; margin-top: 5vh;">
+                <h1 class="stageof fontnavbar2">KONTAK</h1>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=stageof.acehselatan@bmkg.go.id" class="w3-button w3-round w3-blue" style="font-size:2vh">stageof.acehselatan@bmkg.go.id</a>
+            </div>
+        </div>
+    
+        <div class="w3-cell-row" style="margin-top: 4vh;">
+            <div class="w3-container w3-cell w3-cell-middle w3-mobile w3-hide-small" style="width: 50%;">
+                <div style="margin-left:11vw;">
+                    <img style="display: block; height: 10vh;" src="{% static 'image/BMKG.png' %}">
+                    <p class="teksbmkg3" style="margin-left: 1vw;"><b>BMKG</b></p>
+                </div>
+                <div><p class="teksbmkg3" style="margin-left: 12vw; display: block;"><b>Jl. Bandara T. Cut Ali, Kec. Pasie Raja, Kab. Aceh Selatan</b></p></div>
+                <div><p class="teksbmkg3" style="margin-left: 12vw; display: block;"><b>© 2022-Stasiun Geofisika Aceh Selatan</b></p></div>
+            </div>
+            <div class="w3-container w3-cell w3-cell-middle w3-mobile w3-center">
+                <a href="https://www.facebook.com/stageof.acehselatan.3" class="fa fa-facebook w3-center" style="color: white; margin: 18vh 2vw auto;"></a>
+                <a href="https://twitter.com/stageof_tpti" class="fa fa-twitter w3-center" style="color: white; margin: 9vh 2vw;"></a>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=stageof.tapaktuan@gmail.com" class="fa fa-google w3-center" style="color: white; margin: 9vh 2vw;"></a>
+                <a href="https://www.youtube.com/channel/UCfMre-eiPf0HDVMqgMSpZgg/featured" class="fa fa-youtube w3-center" style="color: white; margin: 9vh 2vw;"></a>
+                <a href="https://www.instagram.com/stageof.acehselatan/?hl=id" class="fa fa-instagram w3-center" style="color: white; margin: 9vh 2vw;"></a>
+            </div>
+        </div>
+    </div>
+    
+</footer>

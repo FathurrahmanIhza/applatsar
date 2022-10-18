@@ -1,0 +1,29 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% load my_tags %}
+
+{% block content %}
+<!-- JUDUL -->
+<div style="margin-left:17%">
+
+    <div class="w3-row w3-card-2" id="navbar2" style="height: 12vh;">
+        <div class="w3-col m12 l12 s12 w3-row w3-mobile">
+            <div class="w3-col m1 l1 s12 w3-white w3-hide-small">.</div>
+            <div class="w3-col m10 l10 s12 w3-white w3-center" style="font-size: 6vh; padding-top: 1.5vh;">MONITORING SENSOR</div>
+            <!--LOGO BMKG-->
+            <div class="w3-col m1 l1 w3-center w3-row w3-hide-small" style="padding-top: 1.5vh;">
+                <img class="w3-image logoutama" src="{% static 'image/BMKG.png' %}" alt="BMKG" >
+                <p class="teksbmkg2 w3-center"><b>BMKG</b></p>
+             </div>
+        </div>
+    </div>
+
+</div>
+
+<!--KONTEN-->
+<div style="margin-left: 17%">
+    <div style="height: 100%;">{{ item|safe }}</div>
+</div>  
+
+
+{% endblock %}

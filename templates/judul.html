@@ -1,0 +1,65 @@
+{% load static %}
+{% load my_tags %}
+
+<!-- JAM & TANGGAL-->
+<div class="w3-container w3-row" style="position:relative; z-index: 2;">
+	<div class="w3-col m4 l3 w3-left w3-black" style="height: 5vh; padding-top: 1vh; padding-left: 1vw; z-index: 2;">
+		<div id="tanggal" style="z-index: 2;">
+			<script type='text/javascript'>
+								var months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+								var myDays = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jum&#39;at', 'Sabtu'];
+								var date = new Date();
+								var day = date.getDate();
+								var month = date.getMonth();
+								var thisDay = date.getDay(),
+									thisDay = myDays[thisDay];
+								var yy = date.getYear();
+								var year = (yy < 1000) ? yy + 1900 : yy;
+								document.write(thisDay + ', ' + day + ' ' + months[month] + ' ' + year);
+			</script>	
+        </div>		
+	</div>
+	<div class="w3-col m8 l9 w3-right-align w3-black" style="height: 5vh; padding-top: 1vh; padding-right: 1vw; z-index: 2;">
+		<div id="tanggal" style="z-index: 2;">
+        <div id="timecontainer"></div>
+		<script type="text/javascript" style="font-size: 1.5vw;">
+			new showLocalTime("timecontainer", "server-php", 0, "short")
+		</script>
+        </div>
+	</div>
+</div>
+
+<!-- NAVBAR -->
+<div class="w3-row w3-container w3-card-2" id="navbar3" style="height: 17vh; padding-left: 1vw;">
+	<div class="w3-col m9 l9 s12 w3-center w3-row w3-mobile" style="padding-top: 2.3vh;">
+		<div class="w3-col m1 l1 s12 w3-white" style="font-size: 4vh;"><a href="/"><i class="fa fa-home"></i></a></div>
+        <div class="w3-col m2 l2 s12 w3-dropdown-hover w3-white fontnavbar2" style="margin: 0;">
+            <button class="w3-button fontnavbar2">PROFIL &#9660</button>
+                <div class="w3-dropdown-content">
+                    <a href="/sejarah/" class="w3-bar-item w3-button w3-topbar w3-border-black" style="width: 100%;">Sejarah</a>
+                    <a href="/visimisi/" class="w3-bar-item w3-button w3-border-top" style="width: 100%;">Visi & Misi</a>
+                    <a href="/pegawai/" class="w3-bar-item w3-button w3-border-top" style="width: 100%;">Struktur Kepegawaian</a>
+                </div>
+        </div>
+		<div class="w3-col m2 l2 s12 w3-dropdown-hover w3-white fontnavbar2" style="margin: 0;">
+            <button class="w3-button fontnavbar2"><a href="/layanan/">LAYANAN</a></button>
+        </div>
+        <div class="w3-col m3 l3 s12 w3-dropdown-hover w3-white fontnavbar2" style="margin: 0;">
+            <button class="w3-button fontnavbar2">INFO GEMPABUMI &#9660</button>
+            <div class="w3-dropdown-content">
+                <a href="/gempadirasakan/" class="w3-bar-item w3-button w3-topbar w3-border-black" style="width: 100%;">Gempabumi Dirasakan</a>
+                <a href="/login/" class="w3-bar-item w3-button w3-border-top" style="width: 100%;">DB Gempa</a>
+            </div>
+        </div>
+		<div class="w3-col m3 l3 s12 w3-white fontnavbar2" style="margin: 0;">
+            <button class="w3-button w3-center fontnavbar2"><a href="https://simora.bmkg.go.id/petir_upt/petir_stageof.acehselatan/">SEBARAN PETIR</a></button>
+        </div>
+    </div>
+    <!--LOGO BMKG-->
+	<div class="w3-col m3 l3 w3-center w3-row w3-hide-small" style="margin-bottom: -5%;">
+        <div class="w3-right-align w3-col m8 l8 stageof" style="padding-top: 1.5vh"><b>STASIUN GEOFISIKA<br>ACEH SELATAN</b></div>
+        <div class="w3-right w3-col m4 l4" style="padding-top: 1vh"><img class="w3-image logoutama" src="{% static 'image/BMKG.png' %}" alt="BMKG" >
+            <p class="teksbmkg2 w3-center"><b>BMKG</b></p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% load my_tags %}
+
+{% block content %}
+<style>
+.bg-konten {
+  background-image: url("{% static 'image/bg-registration-form-7.jpg' %}");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;  
+}
+</style>
+<link rel="stylesheet" href="{% static 'css/styleform.css' %}">
+<!-- JUDUL -->
+<div style="margin-left:17%;">
+
+    <div class="w3-row w3-card-2" id="navbar2" style="height: 12vh;">
+        <div class="w3-col m12 l12 s12 w3-row w3-mobile">
+            <div class="w3-col m1 l1 s12 w3-white w3-hide-small">.</div>
+            <div class="w3-col m10 l10 s12 w3-white w3-center" style="font-size: 6vh; padding-top: 1.5vh;">BUKU TAMU</div>
+            <!--LOGO BMKG-->
+            <div class="w3-col m1 l1 w3-center w3-row w3-hide-small w3-hide-medium" style="padding-top: 1.5vh;">
+                <img class="w3-image logoutama" src="{% static 'image/BMKG.png' %}" alt="BMKG" >
+                <div class="teksbmkg2 w3-center"><b>BMKG</b></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!--KONTEN-->
+<div class="bg-konten" style="margin-left: 17%;height: 90vh;">
+    <div class="w3-container">
+        <div class="w3-row w3-center" style="padding-top: 4vh;">
+            <div class="w3-half">
+                <a href='/sitamu/' class="w3-button w3-border w3-card-2 tombolbukutamu"
+                style="background-color: #39459b;">INPUT DATA TAMU</a>    
+            </div>
+            <div class="w3-half">
+                <a href='/siritamu/' class="w3-button w3-border w3-card-2 w3-center tombolbukutamu"
+                style="background-color: #0d99d7;">RIWAYAT TAMU</a>    
+            </div>
+        </div>
+
+        <div class="w3-container w3-card-4 inner" style="margin: 11vh auto;">
+            {% if pesan %}
+                <div class="alert alert-success">{{ pesan }}</div>
+            {% endif %}
+            <form action="/sitamu/" method="POST">
+                <h3>DATA TAMU</h3>
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>
+                    {{ formtamu.nama }}
+                    <span>Nama</span>
+                    <span class="border"></span>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>
+                    {{ formtamu.instansi }}
+                    <span>Instansi</span>
+                    <span class="border"></span>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>
+                    {{ formtamu.agenda }}
+                    <span>Agenda</span>
+                    <span class="border"></span>
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary">SUBMIT &#8594</button>
+            </form>
+        </div>
+    </div>
+</div>  
+
+
+{% endblock %}

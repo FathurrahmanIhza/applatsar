@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load my_tags %}
+
+
+{% block content %}
+
+<div class="bg-konten" style="z-index: -1;">
+    <div class="w3-container paragrafsejarah">
+      <h1 class="fontpembuka2 w3-center" style="padding-top: 2vh;">STRUKTUR KEPEGAWAIAN</h1>
+        <p style="text-indent: 7%;">Stasiun Geofisika Aceh Selatan adalah UPT Kelas III dibawah naungan Badan Meteorologi Klimatologi dan Geofisika. Stasiun kelas III dipimpin oleh seorang pejabat eselon IV. Data berikut diupdate terakhir pada bulan Oktober 2022.</p>
+      <h3 id="judulkonten" style="font-size: 4vh;">STRUKTUR</h3>
+        <p style="text-indent: 7%;">Di Stasiun Geofisika Kelas III Aceh Selatan, KUPT atau Kepala Unit Pelaksana Teknis membawahi langsung 10 PNS, dan juga membawahi 4 PPNP, seperti yang terlihat di struktur dibawah ini.</p>
+        <img style="display: block; max-width: 120%; margin-left:-10%;" src="{% static 'image/struktur.png' %}">
+      <h3 id="judulkonten" style="font-size: 4vh;">PROFIL PEGAWAI</h3>
+        <p style="text-indent: 7%;">Di Stasiun Geofisika Kelas III Aceh Selatan, terdapat 14 pegawai laki-laki, dan 1 orang pegawai perempuan. Dengan total 1 orang pegawai dengan pendidikan terakhir S2, lalu 6 orang S1/D4, 1 orang D3, 1 orang D2, dan 6 orang SMA. Lebih lengkapnya dapat dilihat pada gambar berikut. </p>
+        <img style="display: block; max-width: 120%; margin-left:-10%; padding-bottom: 5vh;" src="{% static 'image/profil.png' %}">
+    </div>
+  </div>
+
+{% endblock %}

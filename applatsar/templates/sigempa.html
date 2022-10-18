@@ -1,0 +1,152 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% load my_tags %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/styletable.css' %}">
+
+<!-- JUDUL -->
+<div style="margin-left:17%">
+
+  <div class="w3-row w3-card-2" id="navbar2" style="height: 12vh;">
+      <div class="w3-col m12 l12 s12 w3-row w3-mobile">
+          <div class="w3-col m1 l1 s12 w3-white w3-hide-small">.</div>
+          <div class="w3-col m10 l10 s12 w3-white w3-center" style="font-size: 6vh; padding-top: 1.5vh;">DATABASE GEMPA</div>
+          <!--LOGO BMKG-->
+          <div class="w3-col m1 l1 w3-center w3-row w3-hide-small" style="padding-top: 1.5vh;">
+              <img class="w3-image logoutama" src="{% static 'image/BMKG.png' %}" alt="BMKG" >
+              <p class="teksbmkg2 w3-center"><b>BMKG</b></p>
+           </div>
+      </div>
+  </div>
+
+</div>
+<!--KONTEN-->
+<div class="bg-konten" style="margin-left: 17%;">
+  <div class="w3-container">
+   
+    <div class="w3-container w3-row" style="z-index: 2; position:relative; left: -1vw;">
+        <div class="w3-col m12 l5 s12 w3-center" style="margin: 1vh auto 4vh">
+          <button type="submit" class="w3-button w3-border w3-round-large marginform" 
+                  style="background-color: mediumaquamarine; color: white;">Input Otomatis</button>
+          <button type="submit" class="w3-button w3-border w3-round-large marginform" 
+                  style="background-color: deepskyblue; color: white;">Input Manual</button>
+        </div>
+        <div class="w3-col m12 l7 s12 w3-center w3-row" style="margin: 1vh auto 4vh">
+          <form method="get">
+            <div class="w3-row w3-center">
+              <div class="w3-col m4 l4 s12" style="margin: 1.5vh auto">Stasiun
+                <label>
+                {{ myFilter.form.stasiun }}
+                </label>
+              </div>
+              <div class="w3-col m6 l6 s12" style="margin: 1.5vh auto">Lokasi
+                <label class="w3-border-black">
+                {{ myFilter.form.Keterangan }}
+                </label>
+              </div>
+              <div class="w3-col m2 l2 s12" style="margin: auto auto">
+                    <button type="submit" class="w3-button w3-border w3-round-large marginform"  
+                    style="color:white;background-color: #0d99d7; margin-top: 0; margin-left: 2vw;">Cari</button>
+              </div>
+            </div>
+          </form>
+        </div>
+    </div>
+    
+    <div>
+      <table class="w3-bordered w3-border">
+        <thead class="tb1">
+        <tr>
+          <th scope="col">STASIUN</th> 
+          <th scope="col">TANGGAL</th>
+          <th scope="col">JAM</th>
+          <th scope="col">LINTANG</th>
+          <th scope="col">BUJUR</th>
+          <th scope="col">KEDALAMAN</th>
+          <th scope="col">MAGNITUDO</th>
+          <th scope="col">KETERANGAN</th>
+          <th scope="col">INFOGRAFIS</th>
+        </tr>
+        </thead>
+        {% for j in DataGempa %}
+        <tbody class="tb1">
+        <tr>
+          <td scope="row" data-label="Stasiun">{{ j.stasiun }}</td>
+          <td data-label="Tanggal">{{ j.tanggal }}</td>
+          <td data-label="Jam">{{ j.jam }}</td>
+          <td data-label="Lintang">{{ j.lintang }} LU</td>
+          <td data-label="Bujur">{{ j.bujur }} BT</td>
+          <td data-label="Kedalaman">{{ j.kedalaman }} Km</td>
+          <td data-label="Magnitudo">{{ j.magnitudo }} M</td>
+          <td data-label="Keterangan">{{ j.keterangan }}</td>
+          <td data-label="Infografis">
+            <a href="/sigempa/gambar/{{ j.id }}"><img src="{% static 'image/print.png' %}"></a>
+            <a onclick="document.getElementById('{{ j.keterangan }}{{ j.stasiun }}').style.display='block'"><img src="{% static 'image/kc.png' %}"></a>
+          </td>
+        </tr>
+        </tbody>
+        {% endfor %}
+      </table>
+
+      {% for j in DataGempa %}      
+      
+      <div class="w3-modal" id='{{ j.keterangan }}{{ j.stasiun }}'>
+        <div class="w3-modal-content w3-animate-zoom w3-card-4" style="margin-left: 35%; width: 540px; height:540px; margin-top: -3%;">
+          <header> 
+            <span onclick="document.getElementById('{{ j.keterangan }}{{ j.stasiun }}').style.display='none'" 
+            class="w3-button w3-display-topright" style="z-index: 1;">&times;</span>
+          </header>
+          <div class="w3-container bg-peta" id='bomaganteng' style="position: relative; width: 540px; height: 540px;">
+            <div class="fontpeta" style="top: 103px; left: 40px; width: 317px; height: 138px;">{{ j.map|safe }}</div>
+            <div class="fontpeta" style="top: 351px; left: 69px;">{{ j.jam }}</div>
+            <div class="fontpeta" style="top: 401px; left: 69px;">{{ j.tanggal }}</div>
+            <div class="fontpeta" style="top: 454px; left: 69px;">{{ j.lintang }} LU - {{ j.bujur }} BT</div>
+            <div class="fontpeta" style="top: 351px; left: 220px;">{{ j.kedalaman }} Km</div>
+            <div class="fontpeta" style="top: 401px; left: 220px; width: 150px;">{{ j.keterangan }} </div>
+            <div class="fontpeta" style="top: 332px; left: 409px; font-size: 38px; color: orange;">{{ j.magnitudo }}</div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+      <div class="w3-center" style="margin: 3vh auto;">
+
+      {% if DataGempa.has_other_pages %}
+        <div class="pagination">
+          {% if DataGempa.has_previous %}
+            <a  href="?{% url_replace request 'page' DataGempa.previous_page_number %}">«</a>
+          {% else %}
+            <a class="disabled"><span>«</span></a>
+          {% endif %}
+
+          {% if DataGempa.number|add:'-5' > 1 %}
+            <a href="?{% url_replace request 'page' DataGempa.number|add:'-5' %}">&hellip;</a>
+          {% endif %}
+
+          {% for i in DataGempa.paginator.page_range %}
+            {% if DataGempa.number == i %}
+              <a class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></a>
+            {% elif i > DataGempa.number|add:'-5' and i < DataGempa.number|add:'5' %}
+              <a href="?{% url_replace request 'page' i %}">{{ i }}</a>
+            {% endif %}
+          {% endfor %}
+
+          {% if DataGempa.paginator.num_pages > DataGempa.number|add:'4' %}
+            <a href="?{% url_replace request 'page' DataGempa.number|add:'-5' %}">&hellip;</a>
+          {% endif %}
+
+          {% if DataGempa.has_next %}
+            <a href="?{% url_replace request 'page' DataGempa.next_page_number %}">»</a>
+          {% else %}
+            <a class="disabled"><span>»</span></a>
+          {% endif %}
+        {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>      
+
+{% endblock %}
+

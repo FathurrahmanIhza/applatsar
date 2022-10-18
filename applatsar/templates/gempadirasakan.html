@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load my_tags %}
+
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/styletable.css' %}">
+<div class="bg-konten" style="z-index: -1;">
+    <div class="w3-container paragrafsejarah">
+      <h1 class="fontpembuka2 w3-center" style="padding-top: 2vh;">GEMPA DIRASAKAN<br>(NASIONAL)</h1>
+    </div>
+    <div class="w3-container" style="padding: 5vh 0;">
+    <table class="w3-border">
+        <thead id="sb1">
+        <tr>
+          <th scope="col">TANGGAL</th>
+          <th scope="col">JAM</th>
+          <th scope="col">LINTANG</th>
+          <th scope="col">BUJUR</th>
+          <th scope="col">MAGNITUDO</th>
+          <th scope="col">KEDALAMAN</th>
+          <th scope="col">WILAYAH</th>
+          <th scope="col">POTENSI</th>
+        </tr>
+        </thead>
+        {% for j in gempa %}
+        <tbody id="sb1">
+        <tr>
+          <td scope="row" data-label="Tanggal">{{ j.Tanggal }}</td>
+          <td data-label="Jam">{{ j.Jam }}</td>
+          <td data-label="Lintang">{{ j.Lintang }}</td>
+          <td data-label="Bujur">{{ j.Bujur }} LU</td>
+          <td data-label="Magnitude">{{ j.Magnitude }} BT</td>
+          <td data-label="Kedalaman">{{ j.Kedalaman }} Km</td>
+          <td data-label="Wilayah">{{ j.Wilayah }} M</td>
+          <td data-label="Potensi">{{ j.Potensi }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    </div>
+</div>
+
+
+{% endblock %}

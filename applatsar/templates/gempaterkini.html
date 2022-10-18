@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Stageof Aceh Selatan</title>
+
+<style>
+div.navbar2 {
+    z-index: 2;
+    background-color: white;  
+}
+</style>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="w3.css">
+<link rel="stylesheet" type="text/css" href="style.css" />
+<link rel="shortcut icon" type="image/png" href="BMKGMini.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&family=Roboto+Slab:wght@800&display=swap" rel="stylesheet">
+
+<script>
+        var offset = 0;
+
+        function calcOffset() {
+            var xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+            xmlhttp.open("HEAD", "http://jam.bmkg.go.id/", false);
+            xmlhttp.send();
+
+            var dateStr = xmlhttp.getResponseHeader('Date');
+            var serverTimeMillisGMT = Date.parse(new Date(Date.parse(dateStr)).toUTCString());
+            var localMillisUTC = (new Date()).getTime();
+
+            offset = serverTimeMillisGMT - localMillisUTC;
+        }
+
+        function getServerTime() {
+            var date = new Date();
+            date.setTime(date.getTime() + offset);
+            return date;
+        }
+
+        function showLocalTime(a, b, c, d) {
+            if (document.getElementById && document.getElementById(a)) {
+                this.container = document.getElementById(a), this.displayversion = d;
+                this.localtime = this.serverdate = getServerTime(), this.localtime.setTime(this.serverdate.getTime() +
+                    60 * c * 1e3), this.updateTime(), this.updateContainer()
+            }
+        }
+
+        function formatField(a, b) {
+            if ("undefined" != typeof b) {
+                var c = a > 12 ? a - 12 : a;
+                return 0 == c ? 12 : c
+            }
+            return a <= 9 ? "0" + a : a
+        }
+        var minggutxt = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"],
+            weekdaystxt = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            bulantxt = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September",
+                "Oktober", "November", "Desember"
+            ],
+            monthstxt = ["January", "February", "March", "April", "May", "June", "July", "August", "September",
+                "October", "November", "December"
+            ];
+        showLocalTime.prototype.updateTime = function() {
+            var a = this;
+            this.localtime.setSeconds(this.localtime.getSeconds() + 1), setTimeout(function() {
+                a.updateTime()
+            }, 1e3)
+        }, showLocalTime.prototype.updateContainer = function() {
+            var a = this;
+            if ("long" == this.displayversion) this.container.innerHTML = this.localtime.toLocaleString();
+            else {
+                var b = this.localtime.getHours(),
+                    c = this.localtime.getMinutes(),
+                    d = this.localtime.getSeconds(),
+                    k = (this.localtime.getDate(), this.localtime.getUTCDate(), minggutxt[this.localtime.getDay()],
+                        bulantxt[this.localtime.getMonth()], weekdaystxt[this.localtime.getUTCDay()], monthstxt[this
+                            .localtime.getUTCMonth()], b + 1);
+                k >= 24 && (k -= 24);
+                var l = b + 2;
+                l >= 24 && (l -= 24);
+                var m = b - 7;
+                m < 0 && (m += 24);
+                this.container.innerHTML =
+                    "<span class='hari-digit hidden-xs'><a href='http://jam.bmkg.go.id/' target='_blank'>Standar Waktu Indonesia</a> </span><span class='FontDigit'>" +
+                    formatField(b) + ":" + formatField(c) + ":" + formatField(d) +
+                    " WIB / </span><span class='FontDigit'>" + formatField(m) + ":" + formatField(c) + ":" +
+                    formatField(d) + " UTC</span>"
+            }
+            setTimeout(function() {
+                a.updateContainer()
+            }, 1e3)
+        };
+</script>
+	
+</head>
+
+
+<body>
+
+<!-- HEADER -->
+
+<div class="w3-container" id="navbar">
+	<div class="tanggal"></div>
+	<!-- HARI -->
+	<section id="header-top" class="home2-header">
+        <div class="w3-container">
+            <div class="w3=row">
+                <div class="w3-col l4 m4 s12 w3-mobile">
+                    <div class="tanggal"></div>
+						<script type='text/javascript'>
+								<!--
+								var months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+								var myDays = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jum&#39;at', 'Sabtu'];
+								var date = new Date();
+								var day = date.getDate();
+								var month = date.getMonth();
+								var thisDay = date.getDay(),
+									thisDay = myDays[thisDay];
+								var yy = date.getYear();
+								var year = (yy < 1000) ? yy + 1900 : yy;
+								document.write(thisDay + ', ' + day + ' ' + months[month] + ' ' + year);
+								//-->
+						</script>
+                </div>
+	<!-- JAM -->
+                <div class="w3-col l8 m8 s12 w3-mobile text-right">
+                    <div id="timecontainer" class="topbar-time pull-right hidden-xs"></div>
+                    <script type="text/javascript">
+                        new showLocalTime("timecontainer", "server-php", 0, "short")
+                    </script>
+                </div>
+            </div>
+        </div>
+</section>
+</div>
+<!-- HEADER -->
+
+<!-- NAVBAR -->
+<div class="w3-container-fluid w3-display-container w3-border-bottom navbar2" id="navbar2">
+	<div class="w3-container w3-bar w3-row w3-mobile w3-large w3-card-2 navbar2">
+		<a href="index.php" class="w3-bar-item w3-button w3-xxlarge w3-mobile w3-col w3-topbar w3-border-white w3-hover-border-green" style="width:110px; height:81px;"><i class="fa fa-home"></i></a>
+		<div class="w3-dropdown-hover w3-mobile">
+			<button class="w3-bar-item w3-button w3-padding-24 w3-mobile w3-col w3-topbar w3-border-white w3-hover-border-green btnprofil">PROFIL &#9660</button>
+				<div class="w3-dropdown-content w3-bar-block spasi-atass">
+					<a href="sejarah.php" class="w3-bar-item w3-button w3-topbar w3-border-black">Sejarah</a>
+					<a href="visi&misi.php" class="w3-bar-item w3-button w3-border-top">Visi & Misi</a>
+					<a href="pegawai.php" class="w3-bar-item w3-button w3-border-top">Struktur Kepegawaian</a>
+				</div>
+		</div>
+		<div class="w3-dropdown-hover w3-mobile">
+			<button class="w3-bar-item w3-button w3-padding-24 w3-mobile w3-col w3-topbar w3-border-white w3-hover-border-green btnlayanan">LAYANAN &#9660</button>
+				<div class="w3-dropdown-content w3-bar-block spasi-atass">
+					<a href="#" class="w3-bar-item w3-button w3-topbar w3-border-black">Layanan A</a>
+					<a href="#" class="w3-bar-item w3-button w3-border-top">Layanan B</a>
+					<a href="#" class="w3-bar-item w3-button w3-border-top">Layanan C</a>
+				</div>
+		</div>
+		<div class="w3-dropdown-hover w3-mobile">
+			<button class="w3-bar-item w3-button w3-padding-24 w3-mobile w3-col w3-topbar w3-hover-border-green btngempa infogempa">INFO GEMPABUMI &#9660</button>
+				<div class="w3-dropdown-content w3-bar-block spasi-atass">
+					<a href="gempaterkini.php" class="w3-bar-item w3-button w3-topbar w3-border-black">Gempabumi Terkini</a>
+					<a href="gempadirasakan.php" class="w3-bar-item w3-button w3-border-top">Gempabumi Dirasakan</a>
+				</div>
+		</div>
+		<div><a href="https://simora.bmkg.go.id/petir_upt/petir_stageof.acehselatan/" 
+			 class="w3-bar-item w3-button w3-padding-24 w3-mobile w3-col w3-topbar w3-border-white w3-hover-border-green btnpetir">SEBARAN PETIR</a></div>
+		<div class="w3-col w3-container" style="width:300px">
+			<div class="w3-large  w3-container stageof w3-hide-medium w3-hide-small"><h2 class="pos_bottom" >STASIUN GEOFISIKA</h2><h4 class="pos_top" align="right"><b>ACEH SELATAN</b></h4></div>
+			<div class="w3-xlarge w3-container bmkg w3-hide-small"><img class="w3-image logoutama" src="BMKG.png" alt="BMKG" ></div>
+		</div>
+	</div>	
+</div>
+<!-- NAVBAR -->
+
+<!-- KONTEN -->
+<div class="w3-container" style="position: relative; top:100px;"
+<?php
+  $xml = simplexml_load_file("https://data.bmkg.go.id/DataMKG/TEWS/autogempa.xml") or die("Gagal mengakses!");
+  echo "<h2>Gempabumi Terbaru</h2>";
+  echo "Shakemap: <br><img src=\"https://data.bmkg.go.id/DataMKG/TEWS/" . $xml->gempa->Shakemap . "\" alt=\"Gempabumi Terbaru\">";
+?>
+	<div class="w3-container" style="position: relative; left: 600px; top: -600px;">
+		 <img src="tanggal.png" width=60 height=60><h4><?php echo $xml->gempa->Tanggal;?> / <?php echo $xml->gempa->Jam;?></h4>
+		 <h4><?php echo $xml->gempa->Lintang . " - "; ?><?php echo $xml->gempa->Bujur;?></h4>
+		 <h4><?php echo $xml->gempa->Magnitude;?></h4>
+		 <h4><?php echo $xml->gempa->Wilayah;?></h4>
+		 <h4><?php echo $xml->gempa->Kedalaman;?></h4>
+		 <h4><?php echo $xml->gempa->Potensi;?></h4>
+		 <h4><?php echo $xml->gempa->Dirasakan;?></h4>
+	</div>
+</div>
+<!-- KONTEN -->
+ 
+<!-- FOOTER -->
+<div class="w3-container-fluid w3-row w3-display-container footer">
+    <div class="w3-col l3 m3 s3 w3-mobile">
+	  <div><a href="https://www.bmkg.go.id/"><img class="w3-image w3-display-top-right w3-round-xlarge bmkg2" src="BMKG.jpg"></div></a>
+	  <h5 style="margin-left:180px"><b>Kantor</b></h5>
+	  <p class="alamat">Jl. Bandara T. Cut Ali, Teupin Gajah<br>Kec. Pasie Raja, Kabupaten Aceh Selatan<br>Aceh 23771</p>
+	</div>
+	
+	<div class="w3-col l3 m3 s3 w3-mobile">	
+	  <div class="w3-container w3-display-topmiddle w3-hide-small link">
+		<h5><b>Link Terkait:</b></h5>
+			<ul class="w3-ul linkterkait">
+				<a href="https://www.bmkg.go.id/"><li>BMKG Pusat</li></a>
+				<a href="http://balai1.bmkg.go.id/"><li>BBMKG Wilayah 1</li></a>
+				<a href="https://inatews.bmkg.go.id/"><li>InaTEWS (Indonesia Tsunami Early<br>Warning System)</li></a>
+				<a href="http://dataonline.bmkg.go.id/home"><li>Data Online BMKG</li></a>
+			</ul>
+	  </div>
+	</div>
+	
+	<div class="w3-col l3 m3 s3 w3-mobile">
+		<div class="w3-container w3-display-topright w3-hide-medium w3-hide-small apk">
+		<h5><b>Aplikasi Mobile:</b></h5>
+		<p class="apkmbl">Semua informasi mengenai Prakiraan Cuaca,<br> Iklim, Kualitas Udara, dan Gempabumi<br> yang terjadi di berbagai wilayah di Indonesia<br> tercakup dalam satu aplikasi mobile.</p>
+		<div><a href="https://play.google.com/store/apps/details?id=com.Info_BMKG&hl=en&gl=US"><img class="w3-image pstore" src="playstore.png"></a></div>
+		<div><a href="https://apps.apple.com/id/app/info-bmkg/id1114372539?l=id"><img class="w3-image appstore" src="appstore.png"></div></a>
+		</div>
+	</div>
+		
+	<div class="w3-container w3-col l3 m3 s3 w3-mobile" style="padding-bottom:0px;">	
+	  <div class="w3-container w3-display-topright w3-hide-medium w3-hide-small kontak ">
+		<h5><b>Kontak:</b></h5>
+			<h4 class="email">&#9993;</h4> 
+				<ul class="w3-ul linkterkait">
+				<li>stageof_tapaktuan@yahoo.com</li>
+				<li>stageoftapaktuan@gmail.com</li>
+				</ul>
+			<h4 style="font-color:white; font-size:26px;">&#9742;</h4>
+			<h6 class="hp">0852 6281 3180</h6>
+		<a href="https://www.instagram.com/stageof.acehselatan/?hl=en"><img class="w3-image ig" src="ig.png">
+		<a href="https://www.facebook.com/stageof.acehselatan.3"><img class="w3-image facebook" src="facebook.png">
+		<a href="https://twitter.com/stageof_tpti?lang=en"><img class="w3-image twitter" src="twitter.png"></a>
+		<a href="https://www.youtube.com/channel/UCfMre-eiPf0HDVMqgMSpZgg/featured"><img class="w3-image yt" src="yt.png">	
+	  </div>
+	</div>
+</div>
+<div class="w3-container w3-black footer2">
+  <p style="margin-left:160px"> © 2022 - Stasiun Geofisika Aceh Selatan </p>
+</div>
+<!-- FOOTER -->
+
+
+<script>
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+var currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    document.getElementById("navbar").style.top = "0";
+  } else {
+    document.getElementById("navbar").style.top = "-60px";
+  }
+  prevScrollpos = currentScrollPos;
+}
+</script>
+
+<script>
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+var currentScrollPos = window.pageYOffset;
+  if (prevScrollpos < currentScrollPos) {
+    document.getElementById("navbar2").style.top = "0";
+  } else {
+    document.getElementById("navbar2").style.top = "37px";
+  }
+  prevScrollpos = currentScrollPos;
+}
+</script>
+
+</body>
+</html>

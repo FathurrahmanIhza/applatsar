@@ -1,0 +1,568 @@
+a:link{text-decoration:none;}
+a:visited{text-decoration:none;}
+a:hover{text-decoration:none;}
+
+.bmkg {
+    position: absolute;
+    top: 8px;
+    right: 30px;
+ }
+
+#tanggal {
+    position: relative;
+	font-size: 1vw;
+	font-family:'Roboto Slab';
+ }
+
+.fontpembuka {
+	font-size:3vw; 
+	font-family:'Roboto Slab';
+}
+
+.fontpembuka2 {
+	font-size:4vw; 
+	font-family:'Baumans';
+}
+
+.blacktext {
+	color:black;
+}
+
+#btnpembuka {
+	margin-top:3vh;
+	margin-bottom: 3vh; 
+	color:white; 
+	background-color:MediumSpringGreen; 
+	font-family:'Roboto Slab';
+	font-size: 1.2vw;
+} 
+
+.simbolbanner {
+	height: 10vh;
+	display: block;
+	margin-top: 3vh;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.teksbmkg {
+	font-size:2vw; 
+	font-family:'Raleway'; 
+	color: white;
+}
+
+.teksbmkg2 {
+	font-size:1.5vw; 
+	font-family:'Raleway'; 
+	color:black;
+	margin-top: 0%;
+}
+
+.teksbmkg3 {
+	font-size:1vw; 
+	font-family:'Raleway'; 
+	color: white;
+}
+
+#navbarteks {
+	font-family: 'Roboto Slab';
+	color: white;
+	font-size: 1.5vw;
+}
+
+
+#second {
+	position:relative; 
+	top:-10px;
+}
+
+
+#navbar0 {
+    position: relative;
+    padding-top: 22px;
+	padding-bottom: 5px;
+	margin-bottom: 10px;
+    background-color: black;
+    height: 65px;
+    width: 100%;
+    top: -16px;
+    color:white; 
+    font-family: 'Roboto Slab'; 
+	z-index: 2;
+	font-size:20px;
+ }
+ 
+#navbar {
+    position: relative;
+    padding-top: 25px;
+    background-color: black;
+    height: 65px;
+    width: 100%;
+    top: -16px;
+    color:white; 
+    font-family: 'Kdam Thmor Pro'; 
+ }
+
+#navbar2 {
+	position:sticky; 
+	z-index:2;
+    background-color:white ; 
+    font-family: 'Roboto Slab'; 
+}
+
+#navbar3 {
+	z-index:2;
+    background-color:white ; 
+    font-family: 'Roboto Slab'; 
+}
+
+a.index {
+	background-color:deepskyblue; 
+	color:white; 
+	height:100%;
+}
+
+button.profil {
+	background-color:deepskyblue; 
+	color:white; 
+}
+
+button.layanan {
+	background-color:deepskyblue; 
+	color:white; 
+}
+
+button.infogempa {
+	background-color:deepskyblue; 
+	color:white; 
+}
+
+button.sebaranpetir {
+	background-color:deepskyblue; 
+	color:white; 
+}
+
+div.btnprofil {
+	color:black; 
+	width:13%;
+}
+
+div.btnlayanan {
+	color:black; 
+	width:13%;
+}
+
+div.btngempa {
+	color:black; 
+	width:20%;
+}
+
+div.btnpetir {
+	color:black; 
+	width:20%;
+}
+
+div.fontnavbar2 {
+	font-size: 1.6vw;
+}
+
+img.logoutama {
+	max-width:40%; 
+}
+
+img.simego {
+	max-width:12vw; 
+	max-height:25vh; 
+	position: relative;
+	margin-top : 15vh;
+	left: 15%;
+}
+
+.stageof {
+  font-size: 1.55vw;
+  font-family: 'Kdam Thmor Pro';
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  margin-top: 1px;
+  background-color: white;
+  border-style: solid;
+  border-color: mediumspringgreen;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+  font-family: 'Roboto Slab';
+  text-align: center;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.slideshow {
+  position: relative;
+  top: 43px;
+  left: 50px;
+  margin-bottom: 17px;
+}
+
+#beranda {
+	font-family:'Roboto Slab'; 
+	color:white; 
+	background-color: black; 
+	height: 70px; 
+	margin-top: -10px; 
+	position: relative; 
+	padding-top: 22px; 
+	padding-left: 87px;
+}
+
+#konten1 {
+	background-color:#F0F8FF; 
+	height: auto;
+	max-width: 100%;
+	margin-top: -10px;
+}
+
+#judulkonten {
+	font-family: 'Baumans' ;
+	color: mediumaquamarine;
+	font-size: 4vw;
+}
+
+.mySlides {
+	width: 75%;
+	display: block;
+	margin: 5vh auto 1vh;
+}
+
+.w3-badge {
+  cursor:pointer;
+  height:13px;
+  width:13px;
+  padding:0;
+}
+
+#konten2 {
+	background-color:white; 
+	height: auto; 
+	margin-top: -100px;
+	z-index: -2;
+	display: block;
+}
+
+#konten21 {
+	position: relative;
+	left: 0px;
+	z-index: 0;
+	background-color: white;
+	padding-top: 35px;
+}
+
+#judulkonten2 {
+	font-family: 'Baumans' ;
+	color: mediumspringgreen;
+	font-size: 4vw;
+	position: relative;
+	margin-top: 25%;
+	left: 20%;
+	z-index: 0;
+	text-decoration: none; 
+}
+	
+.shakemap {
+  margin: auto auto;
+  width: 100%;
+  display: block;
+}
+
+#konten3 {
+	background-color:#F0F8FF; 
+	margin-top:90px;
+	height: 700px; 
+	z-index: -2;
+	display: block;
+}
+
+#judulkonten3 {
+	font-family: 'Baumans' ;
+	color: mediumspringgreen;
+	position:relative; 
+	left:1220px; 
+	top:300px;
+	font-size: 50px;
+}
+
+#konten3 {
+	background-color:#F0F8FF; 
+	margin-top:90px;
+	height: 700px; 
+	z-index: -2;
+}
+
+#judulkonten4 {
+	font-family: 'Baumans' ;
+	color: mediumspringgreen;
+	position:relative; 
+	left:350px; 
+	top:300px;
+	font-size: 50px;
+	z-index: 1;
+}
+
+#konten4 {
+	background-color:white; 
+	height: 700px; 
+	z-index: -2;
+}
+
+#narasigempa {
+	font-family: 'Roboto Slab';
+	font-size: 1.1vw;
+	display: inline-block;
+	margin: 2.5vh 2vw;
+	position: relative;
+	top:1.5vh;
+}
+
+#narasigempa2 {
+	font-family: 'Roboto Slab';
+	font-size: 1.2vw;
+	display: inline-block;
+	margin: 2.5vh 1vw; 
+	width: 70%;
+}
+	
+.iframe {
+	position: relative;
+	width: 80%;
+	overflow: hidden;
+	padding-top: 40%; /* 16:9 Aspect Ratio */
+  }
+  
+.responsive-iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	width: 90%;
+	height: 90%;
+	border: none;
+	margin: auto auto;
+  }
+
+.marginkonten {
+	padding-top: 5vh;
+	padding-bottom: 5vh;
+}
+
+.footer {
+   position:relative;
+   width:100%;
+   background-color:#1a1a1a; 
+   color:white;
+}
+
+.footer2 {
+   position:relative;
+   width:100%;
+   color:white; 
+   font-size:10px;
+}
+
+.bmkg2 {
+	width: 100px;
+	height: 100px;
+    margin-top: 40px;
+    margin-left: 180px;
+ }  
+
+p.alamat {
+	margin-left:180px; 
+	margin-top:-10px; 
+	font-size:11px;
+}
+
+.link {
+  position: relative;
+  top: 25px;
+  width: 60%;
+}
+
+.linkterkait {
+	list-style-type:square; 
+	font-size:11px;
+}
+
+.apk {
+  position: relative;
+  top: 25px;
+  width: 60%;
+  margin-left: 35px;
+}
+
+.apkmbl {
+	margin-top:10px; 
+	font-size:11px;
+}
+
+img.pstore {
+	width:157px; 
+	height:60px;
+	position: relative;	
+	left:-10px; 
+	top:-5px;
+}
+
+img.appstore {
+	width:140px; 
+	height:75px;
+	position: relative; 
+	top:-20px;
+}
+
+.kontak {
+  position: relative;
+  top: 25px;
+  width: 50%;
+}
+ 	
+.email {
+	color:white; 
+	font-size:26px;
+}
+
+.hp {
+	color:white; 
+	position: relative; 
+	top: -40px; 
+	right: -40px;
+}
+
+.facebook {
+  position: relative;
+  right: 31px;
+  top: -37px;
+  width:27px; 
+  height:27px;
+}
+
+.twitter {
+  position: relative;
+  right: -17px;
+  top: -37px;
+  width:35px; 
+  height:35px;
+}
+
+.ig {
+  position: relative;
+  right: -44px;
+  top: -36px;
+  width:26px; 
+  height:25px;
+}
+
+.yt {
+  position: relative;
+  right: -11px;
+  top: -37px;
+  width:53px; 
+  height:37px;
+}
+
+.spasi-pinggir{
+  margin-right: 90px;
+}
+
+#map {
+  height: 800px;
+  width: 1800px;
+}
+  
+.posisi-map {
+  position: relative;
+  top: 540px;
+}
+
+.kontenprofil {
+	border-bottom: 4px solid green; 
+	width: 125px; 
+	z-index: -1;
+	color:black; 
+	font-size: 15px; 
+	margin-left: 300px; 
+	font-family: 'Kdam Thmor Pro'; 
+	position: relative; top:120px;
+}
+ 
+.kontenprofil2 {
+	z-index: -1 ;
+	background-color:white; 
+	position: relative; 
+	top:113px;
+}
+
+.kontenprofil3 {
+	width:1280px; 
+	height:1100px; 
+	background-color:white; 
+}
+
+.judulprofil {
+	color:white; 
+	padding-top:15px; 
+	font-family: 'Kdam Thmor Pro';
+}
+  
+.fa:hover {
+	opacity: 0.7;
+  }
+
+.fontpeta {
+	position: absolute;
+	font-family: 'Roboto Slab';
+	font-weight: bold;
+}
+
+.tombolbukutamu {
+	color: white;
+    height: 40px; 
+	width: 300px; 
+	font-weight: bold;
+	font-family: 'Roboto Slab';
+}
+
+.paragrafsejarah {
+	max-width: 65%;
+	margin: -1.3vh auto;
+	text-align: justify;
+	font-size: 2.3vh;
+}
+
+.sidebardb {
+	width: 4vw; 
+	margin: 5vh auto; 
+	display: block;
+}
+
+#sb1 {
+	font-size: 1.1vw;
+}
+
+.tb1 {
+	font-size: 1vw;
+}
+
+.imgsb1 {
+	width: 1.2vw;
+}

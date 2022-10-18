@@ -1,0 +1,485 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Stageof Aceh Selatan</title>
+
+<style>
+body, html {
+  height: 100%;
+  max-width: 100%;
+  margin: auto;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.hero-image {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("{% static 'image/banner.jpg' %}");
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;  
+}
+
+.bg-konten {
+  background-image: url("{% static 'image/blob-scene-haikei.svg' %}");
+  background-attachment: fixed;
+  background-repeat: repeat-y;
+  background-position: center;
+  background-size: cover;
+  position: relative;  
+}
+
+.bg-footer {
+   background-image:url("{% static 'image/wave.svg' %}");
+   height: 55%;
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+.hero-text button {
+  border-radius: 2vw;
+  outline: 0;
+  display: inline-block;
+  padding: 1vw 2.5vw;
+  color: black;
+  background-color: #ddd;
+  text-align: center;
+  cursor: pointer;
+}
+
+.hero-text button:hover {
+  background-color: dodgerblue;
+  color: white;
+}
+
+.pill-nav a {
+  display: inline-block;
+  color: black;
+  text-align: center;
+  padding: 1vw;
+  text-decoration: none;
+  font-size: 1.2vw;
+  border-radius: 2vw;
+}
+
+.pill-nav a:hover {
+  background-color: deepskyblue;
+  color: black;
+}
+
+.pill-nav a.active {
+  background-color: deepskyblue;
+  color: white;
+}
+
+@media screen and (max-width: 600px) {
+  h1.fontnavbar2 {
+    font-size: 3vh;
+    margin-top: 1vh;
+    width: 100%;
+  }
+  h4#narasigempa {
+	font-family: 'Roboto Slab';
+	font-size: 2.3vh;
+	display: inline-block;
+	margin: 3vh auto;
+  }
+  div#judulkonten {
+	font-family: 'Baumans' ;
+	color: black;
+	font-size: 6vh;
+    }
+  div#tanggal {
+    position: relative;
+	font-size: 1.5vh;
+	font-family:'Roboto Slab';
+    text-align: center;
+  }
+  div.iframe {
+	position: relative;
+	width: 80%;
+	overflow: hidden;
+	padding-top: 60%; /* 16:9 Aspect Ratio */
+  }
+  img.shakemap {
+  margin: auto auto;
+  width: 70%;
+  display: block;
+}
+}
+
+.wrap-layer{
+      position: relative;
+      height: 100%;
+   }
+
+.text-layer{
+      position: absolute;
+      width: 100%;
+      height: auto;
+      top: 0;
+      left: 0;
+      /* non-critical styles left out */
+   }
+</style>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="{% static 'css/w3.css' %}">
+<link rel="stylesheet" href="{% static 'css/style2.css' %}">
+<link rel="shortcut icon" type="image/png" href="{% static 'image/BMKGMini.png' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baumans&family=Kdam+Thmor+Pro&family=Noto+Serif&family=Raleway:wght@500;700&family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+
+<script>
+        var offset = 0;
+
+        function calcOffset() {
+            var xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+            xmlhttp.open("HEAD", "http://jam.bmkg.go.id/", false);
+            xmlhttp.send();
+
+            var dateStr = xmlhttp.getResponseHeader('Date');
+            var serverTimeMillisGMT = Date.parse(new Date(Date.parse(dateStr)).toUTCString());
+            var localMillisUTC = (new Date()).getTime();
+
+            offset = serverTimeMillisGMT - localMillisUTC;
+        }
+
+        function getServerTime() {
+            var date = new Date();
+            date.setTime(date.getTime() + offset);
+            return date;
+        }
+
+        function showLocalTime(a, b, c, d) {
+            if (document.getElementById && document.getElementById(a)) {
+                this.container = document.getElementById(a), this.displayversion = d;
+                this.localtime = this.serverdate = getServerTime(), this.localtime.setTime(this.serverdate.getTime() +
+                    60 * c * 1e3), this.updateTime(), this.updateContainer()
+            }
+        }
+
+        function formatField(a, b) {
+            if ("undefined" != typeof b) {
+                var c = a > 12 ? a - 12 : a;
+                return 0 == c ? 12 : c
+            }
+            return a <= 9 ? "0" + a : a
+        }
+        var minggutxt = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"],
+            weekdaystxt = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            bulantxt = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September",
+                "Oktober", "November", "Desember"
+            ],
+            monthstxt = ["January", "February", "March", "April", "May", "June", "July", "August", "September",
+                "October", "November", "December"
+            ];
+        showLocalTime.prototype.updateTime = function() {
+            var a = this;
+            this.localtime.setSeconds(this.localtime.getSeconds() + 1), setTimeout(function() {
+                a.updateTime()
+            }, 1e3)
+        }, showLocalTime.prototype.updateContainer = function() {
+            var a = this;
+            if ("long" == this.displayversion) this.container.innerHTML = this.localtime.toLocaleString();
+            else {
+                var b = this.localtime.getHours(),
+                    c = this.localtime.getMinutes(),
+                    d = this.localtime.getSeconds(),
+                    k = (this.localtime.getDate(), this.localtime.getUTCDate(), minggutxt[this.localtime.getDay()],
+                        bulantxt[this.localtime.getMonth()], weekdaystxt[this.localtime.getUTCDay()], monthstxt[this
+                            .localtime.getUTCMonth()], b + 1);
+                k >= 24 && (k -= 24);
+                var l = b + 2;
+                l >= 24 && (l -= 24);
+                var m = b - 7;
+                m < 0 && (m += 24);
+                this.container.innerHTML =
+                    "<span class='hari-digit hidden-xs'><a href='http://jam.bmkg.go.id/' target='_blank'>Standar Waktu Indonesia</a> </span><span class='FontDigit'>" +
+                    formatField(b) + ":" + formatField(c) + ":" + formatField(d) +
+                    " WIB / </span><span class='FontDigit'>" + formatField(m) + ":" + formatField(c) + ":" +
+                    formatField(d) + " UTC</span>"
+            }
+            setTimeout(function() {
+                a.updateContainer()
+            }, 1e3)
+        };
+</script>
+	
+</head>
+
+<body>
+<!-- HEADER -->  
+	<!-- JAM & TANGGAL -->
+<div class="w3-row" style="position:relative; z-index: 2;">
+	<div class="w3-col m4 l3 w3-left w3-black" style="height: 5vh; padding-top: 1vh; padding-left: 1vw; z-index: 2;">
+		<div id="tanggal" style="z-index: 2;">
+			<script type='text/javascript'>
+								var months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+								var myDays = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jum&#39;at', 'Sabtu'];
+								var date = new Date();
+								var day = date.getDate();
+								var month = date.getMonth();
+								var thisDay = date.getDay(),
+									thisDay = myDays[thisDay];
+								var yy = date.getYear();
+								var year = (yy < 1000) ? yy + 1900 : yy;
+								document.write(thisDay + ', ' + day + ' ' + months[month] + ' ' + year);
+			</script>	
+        </div>		
+	</div>
+	<div class="w3-col m8 l9 w3-right-align w3-black" style="height: 5vh; padding-top: 1vh; padding-right: 1vw; z-index: 2;">
+		<div id="tanggal" style="z-index: 2;">
+        <div id="timecontainer"></div>
+		<script type="text/javascript">
+			new showLocalTime("timecontainer", "server-php", 0, "short")
+		</script>
+        </div>
+	</div>
+</div>
+
+<!--HERO IMAGES-->
+<div class="hero-image" style="position: relative;">
+	<div class="w3-row w3-container" style="height:20vh; position: relative; z-index: 2;">
+		<div class="w3-col m2 l2 s12 w3-left" style="position: relative; z-index: 2;">
+				<img class="simbolbanner" src="{% static 'image/BMKG.png' %}">
+				<h1 class="teksbmkg w3-center"><b>BMKG</b></h1>
+		</div>
+		<!--NAVBAR1-->
+		<div class="w3-col m8 l8 s12 w3-right" style="position: relative; z-index: 2;">
+			<div class="pill-nav w3-center" style="padding-top:4.5vh;">
+						<a id="navbarteks" class="active">BERANDA</a>
+					<div class="dropdown">
+						<a id="navbarteks">PROFIL &#9660</a>
+							<div class="dropdown-content w3-round-large">
+							<a href="/sejarah/">Sejarah</a>
+							<a href="/visimisi/">Visi & Misi</a>
+							<a href="/pegawai/">Struktur Kepegawaian</a>
+							</div>
+					</div>
+					<a id="navbarteks" href="#contact">LAYANAN</a>
+					<div class="dropdown">
+						<a id="navbarteks">INFO GEMPABUMI &#9660</a>
+							<div class="dropdown-content w3-round-large">
+							<a href="/gempadirasakan/">Gempabumi Dirasakan</a>
+                            <a href="/login/">DB Gempa</a>
+							</div>
+					</div>
+					<a id="navbarteks" href="https://simora.bmkg.go.id/petir_upt/petir_stageof.acehselatan/">SEBARAN PETIR</a>
+			</div>
+		</div>
+	</div>	
+</div>
+
+<!--SELAMAT DATANG-->
+<div class="hero-text w3-mobile" style="margin-top: 10vh;">
+    <p class="fontpembuka">Selamat Datang</p>
+	<h1 class="fontpembuka2">STASIUN GEOFISIKA<span style="color:MediumSpringGreen"><br>ACEH SELATAN</span></h1>
+	<div class="first"><button id="btnpembuka" class="w3-button w3-round-large" type="button" onclick="smoothScroll(document.getElementById('navbar2'))">Telusuri</button></div>
+</div>
+
+<script>
+	window.smoothScroll = function(target) {
+		var scrollContainer = target;
+		do { //find scroll container
+			scrollContainer = scrollContainer.parentNode;
+			if (!scrollContainer) return;
+			scrollContainer.scrollTop += 1;
+		} while (scrollContainer.scrollTop == 0);
+	
+		var targetY = 0;
+		do { //find the top of target relatively to the container
+			if (target == scrollContainer) break;
+			targetY += target.offsetTop;
+		} while (target = target.offsetParent);
+	
+		scroll = function(c, a, b, i) {
+			i++; if (i > 30) return;
+			c.scrollTop = a + (b - a) / 30 * i;
+			setTimeout(function(){ scroll(c, a, b, i); }, 20);
+		}
+		// start scrolling
+		scroll(scrollContainer, scrollContainer.scrollTop, targetY, 0);
+	}
+</script>
+
+
+<!--NAVBAR2-->
+<div class="w3-row w3-card-2" id="navbar2" style="height: 12vh; padding-left: 1vw;">
+	<div class="w3-col m9 l9 s12 w3-center w3-row w3-mobile" style="padding-top: 2.3vh;">
+		<div class="w3-col m1 l1 s12 w3-white" style="font-size: 4vh;"><a href="index.html"><i class="fa fa-home"></i></a></div>
+        <div class="w3-col m2 l2 s12 w3-dropdown-hover w3-white fontnavbar2" style="margin: 0;">
+            <button class="w3-button fontnavbar2">PROFIL &#9660</button>
+                <div class="w3-dropdown-content">
+                    <a href="/sejarah/" class="w3-bar-item w3-button w3-topbar w3-border-black" style="width: 100%;">Sejarah</a>
+                    <a href="/visimisi/" class="w3-bar-item w3-button w3-border-top" style="width: 100%;">Visi & Misi</a>
+                    <a href="/pegawai/" class="w3-bar-item w3-button w3-border-top" style="width: 100%;">Struktur Kepegawaian</a>
+                </div>
+        </div>
+		<div class="w3-col m2 l2 s12 w3-dropdown-hover w3-white fontnavbar2" style="margin: 0;">
+            <button class="w3-button fontnavbar2"><a href="/layanan/">LAYANAN</a></button>
+        </div>
+        <div class="w3-col m3 l3 s12 w3-dropdown-hover w3-white fontnavbar2" style="margin: 0;">
+            <button class="w3-button fontnavbar2">INFO GEMPABUMI &#9660</button>
+            <div class="w3-dropdown-content">
+                <a href="/gempadirasakan/" class="w3-bar-item w3-button w3-topbar w3-border-black" style="width: 100%;">Gempabumi Dirasakan</a>
+                <a href="/login/" class="w3-bar-item w3-button w3-border-top" style="width: 100%;">DB Gempa</a>
+            </div>
+        </div>
+		<div class="w3-col m3 l3 s12 w3-white fontnavbar2" style="margin: 0;">
+            <button class="w3-button fontnavbar2"><a href="https://simora.bmkg.go.id/petir_upt/petir_stageof.acehselatan/">SEBARAN PETIR</a></button>
+        </div>
+    </div>
+    <!--LOGO BMKG-->
+	<div class="w3-col m3 l3 w3-center w3-row w3-hide-small" style="margin-bottom: -5%;">
+        <div class="w3-right-align w3-col m8 l8 stageof" style="padding-top: 1.5vh"><b>STASIUN GEOFISIKA<br>ACEH SELATAN</b></div>
+        <div class="w3-right w3-col m4 l4" style="padding-top: 1vh"><img class="w3-image logoutama" src="{% static 'image/BMKG.png' %}" alt="BMKG" >
+            <p class="teksbmkg2 w3-center"><b>BMKG</b></p>
+        </div>
+    </div>
+</div>
+
+<!--KONTEN-->
+<div class="bg-konten">
+
+    <!--KONTEN 1-->
+    <div class="w3-cell-row marginkonten">
+        <div class="w3-container w3-cell w3-center w3-cell-middle w3-mobile" id="judulkonten" style="width: 40%;">
+        <p>INFOGRAFIS</p>
+        </div>
+        <div class="w3-container w3-cell w3-cell-middle w3-mobile">
+            <a href="{% static 'image/minggu1.jpg' %}"><img class="mySlides w3-card-4 w3-image w3-round-large" src="{% static 'image/minggu1.png' %}"></a>
+            <a href="{% static 'image/minggu3.jpg' %}"><img class="mySlides w3-card-4 w3-image w3-round-large" src="{% static 'image/minggu2.png' %}"></a>
+            <a href="{% static 'image/minggu4.jpg' %}"><img class="mySlides w3-card-4 w3-image w3-round-large" src="{% static 'image/minggu3.png' %}"></a>
+            <div class="w3-center w3-container w3-section w3-large">
+             <div class="w3-left w3-text-white" onclick="plusDivs(-1)">&#10094;</div>
+             <div class="w3-right w3-text-white" onclick="plusDivs(1)">&#10095;</div>
+             <span class="w3-badge demo w3-border" onclick="currentDiv(1)"></span>
+             <span class="w3-badge demo w3-border" onclick="currentDiv(2)"></span>
+             <span class="w3-badge demo w3-border" onclick="currentDiv(3)"></span>
+            </div>
+        </div>
+    </div> 
+    
+    <!--KONTEN 2-->
+    <div class="w3-cell-row marginkonten">
+        <div class="w3-container w3-cell w3-center w3-cell-middle w3-mobile" id="judulkonten" style="width: 40%;">
+            <p>GEMPABUMI DIRASAKAN</p>
+        </div>
+        <div class="w3-container w3-cell w3-cell-middle w3-mobile" style="width: 35%;">
+			<img class="w3-card-4 w3-round-xlarge shakemap" src="https://data.bmkg.go.id/DataMKG/TEWS/{{ gempadirasakan.Shakemap }}">				
+        </div>
+
+        <div class="w3-container w3-cell w3-cell-middle w3-mobile" style="margin-right:5px ;">
+            <div><img src="{% static 'image/tanggal.png' %}" style="max-width: 13%; margin-left: 3%;">
+                <h4 id="narasigempa">TANGGAL<br>{{ gempadirasakan.Tanggal }}</h4>
+            </div>
+            <div><img src="{% static 'image/lokasi.png' %}" style="max-width: 13%; margin-left: 3%;">
+                <h4 id="narasigempa">LOKASI<br>{{ gempadirasakan.Lintang }} - {{ gempadirasakan.Bujur }}</h4>
+            </div>
+            <div><img src="{% static 'image/magnitudo.png' %}" style="max-width: 13%; margin-left: 3%;">
+                <h4 id="narasigempa">MAGNITUDO<br>{{ gempadirasakan.Magnitude }}</h4>
+            </div>
+            <div><img src="{% static 'image/kedalaman.png' %}" style="max-width: 13%; margin-left: 3%;">
+                <h4 id="narasigempa">KEDALAMAN<br>{{ gempadirasakan.Kedalaman }}</h4>
+            </div>    
+            <div><img src="{% static 'image/warn.png' %}" style="max-width: 13%; margin-left: 3%;">			 
+                <h4 id="narasigempa" style="width: 65%;">{{ gempadirasakan.Potensi }}</h4>
+            </div>
+            <div><img src="{% static 'image/intensitas.png' %}" style="max-width: 13%; margin-left: 3%;">
+                <h4 id="narasigempa" style="width: 65%;">Dirasakan dengan Skala Intensitas MMI : {{ gempadirasakan.Dirasakan }}</h4>
+            </div>
+        </div>
+    </div>
+
+    <!--KONTEN 3-->
+    <div class="w3-cell-row marginkonten">
+        <div class="w3-container w3-cell w3-center w3-cell-middle w3-mobile" id="judulkonten" style="width: 40%;">
+        <p>VIDEOGRAFIS</p>
+        </div>
+        <div class="w3-container w3-cell w3-cell-middle w3-mobile iframe">
+            <iframe class="responsive-iframe  w3-card-4 w3-round-xlarge" src="https://www.youtube.com/embed/ylcWK6d8ToQ" title="YouTube video player" 
+            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            </iframe>
+        </div>
+    </div> 
+</div>
+
+<script>
+    var slideIndex = 1;
+    showDivs(slideIndex);
+    
+    function plusDivs(n) {
+      showDivs(slideIndex += n);
+    }
+    
+    function currentDiv(n) {
+      showDivs(slideIndex = n);
+    }
+    
+    function showDivs(n) {
+      var i;
+      var x = document.getElementsByClassName("mySlides");
+      var dots = document.getElementsByClassName("demo");
+      if (n > x.length) {slideIndex = 1}
+      if (n < 1) {slideIndex = x.length}
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";  
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" w3-white", "");
+      }
+      x[slideIndex-1].style.display = "block";  
+      dots[slideIndex-1].className += " w3-white";
+    }
+</script>
+
+<!--FOOTER-->
+<div class="bg-footer">
+    
+    <div class="w3-cell-row w3-border-top">
+        <div class="w3-container w3-cell w3-center w3-cell-middle" style="display: block; margin-top: 5vh;">
+            <h1 class="stageof fontnavbar2">KONTAK</h1>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=stageof.acehselatan@bmkg.go.id" class="w3-button w3-round w3-blue" style="font-size:2vh">stageof.acehselatan@bmkg.go.id</a>
+        </div>
+    </div>
+
+    <div class="w3-cell-row" style="margin-top: 3vh;">
+        <div class="w3-container w3-cell w3-cell-middle w3-mobile w3-hide-small" style="width: 50%;">
+            <div style="margin-left:11vw;">
+                <img style="display: block; height: 10vh;" src="{% static 'image/BMKG.png' %}">
+                <p class="teksbmkg3" style="margin-left: 1vw;"><b>BMKG</b></p>
+            </div>
+            <div><p class="teksbmkg3" style="margin-left: 12vw; display: block;"><b>Jl. Bandara T. Cut Ali, Kec. Pasie Raja, Kab. Aceh Selatan</b></p></div>
+            <div><p class="teksbmkg3" style="margin-left: 12vw; display: block;"><b>© 2022-Stasiun Geofisika Aceh Selatan</b></p></div>
+            <div><a href="https://www.bmkg.go.id" class="teksbmkg3" style="margin-left: 12vw; display: block;"><b>Link Terkait : BMKG PUSAT</b></a></div>
+        </div>
+        <div class="w3-container w3-cell w3-cell-middle w3-mobile w3-center">
+            <a href="https://www.facebook.com/stageof.acehselatan.3" class="fa fa-facebook w3-center" style="color: white; margin: 18vh 2vw auto;"></a>
+            <a href="https://twitter.com/stageof_tpti" class="fa fa-twitter w3-center" style="color: white; margin: 9vh 2vw;"></a>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=stageof.tapaktuan@gmail.com" class="fa fa-google w3-center" style="color: white; margin: 9vh 2vw;"></a>
+            <a href="https://www.youtube.com/channel/UCfMre-eiPf0HDVMqgMSpZgg/featured" class="fa fa-youtube w3-center" style="color: white; margin: 9vh 2vw;"></a>
+            <a href="https://www.instagram.com/stageof.acehselatan/?hl=id" class="fa fa-instagram w3-center" style="color: white; margin: 9vh 2vw;"></a>
+        </div>
+    </div>
+
+</div>
+</body>

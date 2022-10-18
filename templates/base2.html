@@ -1,0 +1,107 @@
+{% load static %}
+{% load my_tags %}
+
+<!DOCTYPE html>
+<html>
+<title>Sistem Infomasi Stageof Aceh Selatan</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script src="https://s.codepen.io/assets/libs/modernizr.js" type="text/javascript"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="{% static 'css/w3.css' %}">
+<link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+<link rel="stylesheet" href="{% static 'css/style2.css' %}">
+<link rel="shortcut icon" type="image/png" href="{% static 'image/BMKGMini.png' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baumans&family=Kdam+Thmor+Pro&family=Noto+Serif&family=Raleway:wght@500;700&family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+
+<style>
+body, html {
+  height: 100%;
+  max-width: 100%;
+  margin: auto;
+}
+
+.bg-konten {
+  background-image: url("{% static 'image/bgdb.svg' %}");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;  
+}
+
+.bg-peta {
+  background-image: url("{% static 'image/peta.png' %}");
+  background-attachment: scroll;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 540px;
+  
+}
+
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.pagination a.active {
+  background-color: deepskyblue;
+  color: white;
+  border-radius: 5px;
+}
+
+.pagination a:hover:not(.active) {
+  background-color: #ddd;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 600px) {
+  .fontnavbar2 {
+    font-size: 3vh;
+    margin-top: 1vh;
+    width: 100%;
+  }
+  h4#narasigempa {
+	font-family: 'Roboto Slab';
+	font-size: 2.3vh;
+	display: inline-block;
+	margin: 3vh auto;
+  }
+  div#judulkonten {
+	font-family: 'Baumans' ;
+	color: black;
+	font-size: 6vh;
+  }
+  img.imgsb1 {
+    width: 5vh;
+  }
+  .tb1 {
+    font-size: 3vh;
+  }
+}
+
+</style>
+
+<body>
+
+    {% include 'judul2.html' %}
+    {% block content %}
+    
+    {% endblock %}
+
+</body>
+
+</html>

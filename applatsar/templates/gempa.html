@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <table border='1'>
+        <tr>
+          <th>Tanggal</th> 
+          <th>Jam</th>
+          <th>Lintang</th>
+          <th>Bujur</th>
+          <th>Magnitude</th>
+          <th>Kedalaman</th>
+          <th>Wilayah</th>
+          <th>Potensi</th>
+        </tr>
+        {% for i in gempa %}
+          <tr>
+            <td>{{ i.Tanggal }}</td>
+            <td>{{ i.Jam }}</td>
+            <td>{{ i.Lintang }}</td>
+            <td>{{ i.Bujur }}</td>
+            <td>{{ i.Magnitude }}</td>
+            <td>{{ i.Kedalaman }}</td>
+            <td>{{ i.Wilayah }}</td>
+            <td>{{ i.Potensi }}</td>
+          </tr>
+        {% endfor %}
+      </table>
+
+</body>
+</html>

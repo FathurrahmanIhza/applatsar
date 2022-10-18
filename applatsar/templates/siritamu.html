@@ -1,0 +1,129 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% load my_tags %}
+
+{% block content %}
+<style>
+  .bg-konten {
+    background-image: url("{% static 'image/bg-registration-form-7.jpg' %}");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;  
+  }
+</style>
+<link rel="stylesheet" href="{% static 'css/styleform.css' %}">
+<link rel="stylesheet" href="{% static 'css/styletable2.css' %}">
+<!-- JUDUL -->
+<div style="margin-left:17%;">
+
+    <div class="w3-row w3-card-2" id="navbar2" style="height: 12vh;">
+        <div class="w3-col m12 l12 s12 w3-row w3-mobile">
+            <div class="w3-col m1 l1 s12 w3-white w3-hide-small">.</div>
+            <div class="w3-col m10 l10 s12 w3-white w3-center" style="font-size: 6vh; padding-top: 1.5vh;">BUKU TAMU</div>
+            <!--LOGO BMKG-->
+            <div class="w3-col m1 l1 w3-center w3-row w3-hide-small w3-hide-medium" style="padding-top: 1.5vh;">
+                <img class="w3-image logoutama" src="{% static 'image/BMKG.png' %}" alt="BMKG" >
+                <div class="teksbmkg2 w3-center"><b>BMKG</b></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!--KONTEN-->
+<div class="bg-konten" style="margin-left: 17%;">
+    <div class="w3-container">
+        <div class="w3-row w3-center" style="padding-top: 4vh;">
+            <div class="w3-half">
+                <a href='/sitamu/' class="w3-button w3-border w3-card-2 tombolbukutamu"
+                style="background-color: #0d99d7;">INPUT DATA TAMU</a>    
+            </div>
+            <div class="w3-half">
+                <a href='/siritamu/' class="w3-button w3-border w3-card-2 w3-center tombolbukutamu"
+                style="background-color: #39459b;">RIWAYAT TAMU</a>    
+            </div>
+        </div>
+            <form method="get">
+              <div class="w3-row w3-center">
+                <div class="w3-col m4 l4 s12" style="margin: 4vh auto">Nama
+                  <label>
+                  {{ myFilter.form.nama }}
+                  </label>
+                </div>
+                <div class="w3-col m5 l5 s12" style="margin: 4vh auto">Instansi
+                  <label>
+                  {{ myFilter.form.instansi }}
+                  </label>
+                </div>
+                <div class="w3-col m3 l3 s12" style="margin: 2vh auto">
+                      <button type="submit" class="w3-button w3-card-2 w3-border" 
+                      style="background-color: #0d99d7; margin-top: 0; margin-left: 2vw;">Cari</button>
+                </div>
+              </div>
+            </form>
+        <div style="padding: 4vh 5vw; font-size: 12px; margin: 7vh auto 0;">
+            <table id="mytable" class="w3-border w3-bordered">
+              <thead id="tab_header">
+              <tr>
+                <th scope="col">NAMA</th> 
+                <th scope="col">TANGGAL</th>
+                <th scope="col">JAM</th>
+                <th scope="col">INSTANSI</th>
+                <th scope="col">AGENDA</th>
+              </tr>
+              </thead>
+              {% for j in DataTamu %}
+              <tbody id="tab_body">
+              <tr style="font-size: 1.7vh;">
+                <td scope="row" data-label="NAMA">{{ j.nama }}</td>
+                <td data-label="TANGGAL">{{ j.tanggal }}</td>
+                <td data-label="JAM">{{ j.jam }}</td>
+                <td data-label="INSTANSI">{{ j.instansi }}</td>
+                <td data-label="AGENDA">{{ j.agenda }}</td>
+              </tr>
+              </tbody>
+              {% endfor %}
+            </table>
+        </div>
+
+        <div class="w3-center" style="margin: 1vh auto;">
+
+            {% if DataTamu.has_other_pages %}
+              <div class="pagination">
+                {% if DataTamu.has_previous %}
+                  <a href="?{% url_replace request 'page' DataTamu.previous_page_number %}">«</a>
+                {% else %}
+                  <a class="disabled"><span>«</span></a>
+                {% endif %}
+      
+                {% if DataTamu.number|add:'-5' > 1 %}
+                  <a href="?{% url_replace request 'page' DataTamu.number|add:'-5' %}">&hellip;</a>
+                {% endif %}
+      
+                {% for i in DataTamu.paginator.page_range %}
+                  {% if DataTamu.number == i %}
+                    <a class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></a>
+                  {% elif i > DataTamu.number|add:'-5' and i < DataTamu.number|add:'5' %}
+                    <a href="?{% url_replace request 'page' i %}">{{ i }}</a>
+                  {% endif %}
+                {% endfor %}
+      
+                {% if DataTamu.paginator.num_pages > DataTamu.number|add:'4' %}
+                  <a href="?{% url_replace request 'page' DataTamu.number|add:'-5' %}">&hellip;</a>
+                {% endif %}
+      
+                {% if DataTamu.has_next %}
+                  <a href="?{% url_replace request 'page' DataTamu.next_page_number %}">»</a>
+                {% else %}
+                  <a class="disabled"><span>»</span></a>
+                {% endif %}
+              {% endif %}
+              </div>
+              
+        </div>
+</div>  
+
+
+{% endblock %}
